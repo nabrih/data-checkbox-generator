@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample 1</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+	<script type="text/javascript" src="./script.js"></script>
+</head>
+<body>
+	<div>
+		<h3>Usage</h3>
+		1. Include the jQuery and Script : <br/>
+			- https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js<br/>
+			- script.js<br/>
+
+		2. Just put your id using data attribute at table row like this:<br/>
+		<textarea disabled=""><tr data-id="1"></tr></textarea><br/>
+		And then call from selector:<br/>
+		<textarea disabled="">$('selector').multiSelectTable();</textarea>
+
+	</div>
+	Example
+	<table class="tableData" border="1">
+		<thead>
+			<tr>
+				<td>Item</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-id="plu1">
+				<td>Data 1</td>
+			</tr>
+			<tr data-id="plu2">
+				<td>Data 2</td>
+			</tr>
+		</tbody>
+	</table>
+	Click button below, and see at your console log<br/>
+	<button onclick="showSelectedData()">Show Selected ID</button>
+	<div id="log"></div>
+
+	<script type="text/javascript">
+		var $tableData = $('.tableData');
+		$tableData.multiSelectTable();
+
+		function showSelectedData() {
+			var a = $tableData.getSelectedData({id:"id"});
+			console.log(a);
+			if (a.length>0)
+				$('#log').append(a+'<br/>');
+			else
+				$('#log').append('no data selected<br/>');
+		}
+
+	</script>
+</body>
+</html>
